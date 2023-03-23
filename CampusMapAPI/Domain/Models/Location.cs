@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace Domain.Models
 {
-    public class Location : BaseModel
+    public class Location
     {
-        public string Name { get; set; }
-        public string Type { get; set; }
-        public string Description { get; set; }
-        public string IconUrl { get; set; }
-        public string ActiveTime { get; set; }
+        public int Id { get; set; }
+        public string? Name { get; set; }
         public int XCoordinate { get; set; }
         public int YCoordinate { get; set; }
-        public int Floor { get; set; }
+        public int? XRenderValue { get; set; }
+        public int? YRenderValue { get; set; }
+        public int? Floor { get; set; }
 
+        public virtual ICollection<Room> Rooms { get; set; }
     }
 }

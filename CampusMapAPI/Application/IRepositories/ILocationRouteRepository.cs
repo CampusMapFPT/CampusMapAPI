@@ -5,11 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.IServices
+namespace Application.IRepositories
 {
-    public interface IBlogService
+    public interface ILocationRouteRepository : IGenericRepository<LocationRoute>
     {
-        Task<IEnumerable<Blog>> GetAllAsync();
-        Task<Blog> GetByIdAsync(Guid id);
+
     }
 }

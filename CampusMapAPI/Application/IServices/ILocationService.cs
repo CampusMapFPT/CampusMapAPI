@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace Application.IServices
 {
-    public interface IBlogService
+    public interface ILocationService
     {
-        Task<IEnumerable<Blog>> GetAllAsync();
-        Task<Blog> GetByIdAsync(Guid id);
+        public IEnumerable<Location> GetDirections();
     }
 }

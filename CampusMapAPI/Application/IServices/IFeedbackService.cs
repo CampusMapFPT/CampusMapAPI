@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace Application.IServices
 {
-    public interface IBlogService
+    public interface IFeedbackService
     {
-        Task<IEnumerable<Blog>> GetAllAsync();
-        Task<Blog> GetByIdAsync(Guid id);
+        Task AddNewFeedbackAsync(Feedback feedback);
     }
 }
