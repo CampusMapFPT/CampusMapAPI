@@ -48,14 +48,14 @@ namespace Application.Services
                     var YDifference =
                         Math.Abs(locationList[i].YCoordinate - locationList[j].YCoordinate);
 
-                    if (XDifference == 1 && YDifference == 0 
+                    if (XDifference == 1 && YDifference == 0
                         && (locationList[i].Floor == locationList[j].Floor))
                     {
                         var distance = GetDistance(locationList[i], locationList[j]);
                         graph.Connect(
                             (uint)locationList[i].Id,
                             (uint)locationList[j].Id,
-                            distance,"");
+                            distance, "");
                     }
                     if (YDifference == 1 && XDifference == 0
                         && (locationList[i].Floor == locationList[j].Floor))
@@ -76,7 +76,7 @@ namespace Application.Services
 
             var path = result.GetPath().ToList();
 
-            locationRoute = path.Select(x => locationList[(int)x-1]);
+            locationRoute = path.Select(x => locationList[(int)x - 1]);
 
             var locationGuide = GetOptimizedDirection(locationRoute.ToList());
             return locationGuide;
@@ -84,8 +84,8 @@ namespace Application.Services
 
         public int GetDistance(Location location1, Location location2)
         {
-            var XDifference = location1.XCoordinate- location2.XCoordinate;
-            var YDifference = location1.YCoordinate- location2.YCoordinate;
+            var XDifference = location1.XCoordinate - location2.XCoordinate;
+            var YDifference = location1.YCoordinate - location2.YCoordinate;
             var floorDifference = location1.Floor - location2.Floor;
             var distance = Math.Sqrt(Math.Pow(XDifference, 2) + Math.Pow(YDifference, 2) + Math.Pow((double)floorDifference, 2));
 
@@ -97,7 +97,8 @@ namespace Application.Services
             var directionGuide = new List<DirectionGuideViewModel>();
             directionGuide.Add(new DirectionGuideViewModel
             {
-                Location = locations.ElementAt(0)
+                Location = locations.ElementAt(0),
+                Floor = (int)locations.ElementAt(0).Floor
             });
             var index = 1;
             while (index < locations.Count() - 1)
@@ -106,9 +107,9 @@ namespace Application.Services
                 var prevLocation = locations.ElementAt(index - 1);
                 var nextLocation = locations.ElementAt(index + 1);
 
-                var isStraight = 
+                var isStraight =
                     ((currentLocation.XCoordinate == prevLocation.XCoordinate) &&
-                    (currentLocation.XCoordinate == nextLocation.XCoordinate)) 
+                    (currentLocation.XCoordinate == nextLocation.XCoordinate))
                     ||
                     ((currentLocation.YCoordinate == prevLocation.YCoordinate) &&
                     (currentLocation.YCoordinate == nextLocation.YCoordinate));
@@ -119,7 +120,7 @@ namespace Application.Services
 
                 if (isStillClimb)
                 {
-                    directionGuide.RemoveAt(index);
+                    locations.RemoveAt(index);
                 }
                 else if (!isStraight || hasGoUpOrDown)
                 {
@@ -129,21 +130,25 @@ namespace Application.Services
                     directionGuide.Add(new DirectionGuideViewModel
                     {
                         Location = currentLocation,
-                        DirectionGuide = $"{direction} tại {currentLocation.Name} {(hasGoUpOrDown? $"tới tầng {(nextLocation.Floor != 0? nextLocation.Floor : "G")}" : "")}"
+                        Floor = (int)currentLocation.Floor,
+                        DirectionGuide = $"{direction} tại {currentLocation.Name} {(hasGoUpOrDown ? $"tới tầng {(nextLocation.Floor != 0 ? nextLocation.Floor : "G")}" : "")}"
                     });
                 }
-                else 
+                else
                 {
                     index++;
                     directionGuide.Add(new DirectionGuideViewModel
                     {
-                        Location = currentLocation
+                        Location = currentLocation,
+                        Floor = (int)currentLocation.Floor
                     });
                 }
             }
             directionGuide.Add(new DirectionGuideViewModel
             {
-                Location = locations.ElementAt(locations.Count() - 1)
+                Location = locations.ElementAt(locations.Count() - 1),
+                 Floor = (int)locations.ElementAt(locations.Count() - 1).Floor
+
             });
 
             #region Set first direction guide
@@ -169,8 +174,7 @@ namespace Application.Services
                     directionGuide
                         .ElementAt(index)
                         .DirectionGuide =
-                        $"Đi thẳng tới {
-                            directionGuide.ElementAt(index + 1).Location.Name}";
+                        $"Đi thẳng tới {directionGuide.ElementAt(index + 1).Location.Name}";
                 }
                 index++;
             }
@@ -202,6 +206,6 @@ namespace Application.Services
 
             return direction;
         }
-        
+
     }
 }

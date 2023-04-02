@@ -26,11 +26,7 @@ namespace WebAPI.Controllers
                 {
                     Status = Ok().StatusCode,
                     Message = "Find way sucess",
-                    Result = new
-                    {
-                        step = resultList.Count(),
-                        direction = resultList
-                    }
+                    Result = resultList
                 });
             }
             catch (Exception ex)

@@ -10,6 +10,7 @@ namespace Application.ViewModels
     public class DirectionGuideViewModel
     {
         public Location Location { get; set; }
+        public int Floor { get; set; }
         public string DirectionGuide { get; set; }
     }
 }
