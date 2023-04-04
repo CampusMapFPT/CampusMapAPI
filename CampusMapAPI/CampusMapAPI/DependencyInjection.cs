@@ -29,7 +29,9 @@ namespace WebAPI
                 options.AddPolicy(name: "_myAllowSpecificOrigins",
                                   policy =>
                                   {
-                                      policy.WithOrigins("http://localhost:3000");
+                                      policy.WithOrigins(
+                                          "http://localhost:3000",
+                                          "https://campusmapfpt.netlify.app");
                                   });
             });
 
