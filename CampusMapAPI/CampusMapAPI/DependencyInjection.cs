@@ -22,7 +22,6 @@ namespace WebAPI
         {
             services.AddControllers().AddJsonOptions(opt =>
             {
-                opt.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
                 opt.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
             });
             services.AddCors(options =>
