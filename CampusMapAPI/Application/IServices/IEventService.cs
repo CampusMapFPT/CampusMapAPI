@@ -11,6 +11,6 @@ namespace Application.IServices
     {
         Task<IEnumerable<Event>> GetAllOnGoingEventAsync();
         Task<IEnumerable<Event>> GetAllFutureEventAsync();
-        Task<Event> GetByIdAsync(Guid id);
+        Task<Event> GetByIdAsync(int id);
     }
 }

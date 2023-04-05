@@ -10,6 +10,6 @@ namespace Application.IServices
     public interface IBlogService
     {
         Task<IEnumerable<Blog>> GetAllAsync();
-        Task<Blog> GetByIdAsync(Guid id);
+        Task<Blog> GetByIdAsync(int id);
     }
 }
