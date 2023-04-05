@@ -26,7 +26,7 @@ namespace WebAPI.Controllers
                 return Ok(new BaseResponseModel()
                 {
                     Status = Ok().StatusCode,
-                    Message = "Get all blog success",
+                    Message = "Get all event success",
                     Result = list
                 });
             }
@@ -50,7 +50,7 @@ namespace WebAPI.Controllers
                 return Ok(new BaseResponseModel()
                 {
                     Status = Ok().StatusCode,
-                    Message = "Get all blog success",
+                    Message = "Get all event success",
                     Result = list
                 });
             }
@@ -73,7 +73,7 @@ namespace WebAPI.Controllers
                 return Ok(new BaseResponseModel()
                 {
                     Status = Ok().StatusCode,
-                    Message = $"Get blog with {id} success",
+                    Message = $"Get event with {id} success",
                     Result = item
                 });
             }
@@ -90,6 +90,29 @@ namespace WebAPI.Controllers
                 return BadRequest(new BaseFailedResponseModel
                 {
                     Status = BadRequest().StatusCode,
+                    Message = ex.Message,
+                });
+            }
+        }
+
+        [HttpGet("lastest")]
+        public async Task<IActionResult> GetLastestEvent()
+        {
+            try
+            {
+                var item = await _eventService.GetLastestEventAsync();
+                return Ok(new BaseResponseModel()
+                {
+                    Status = Ok().StatusCode,
+                    Message = $"Get event success",
+                    Result = item
+                });
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(new BaseFailedResponseModel
+                {
+                    Status = NotFound().StatusCode,
                     Message = ex.Message,
                 });
             }
