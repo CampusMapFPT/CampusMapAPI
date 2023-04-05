@@ -37,5 +37,12 @@ namespace Application.Services
 
             return item;
         }
+        public async Task<Event> GetLastestEventAsync()
+        {
+            var list = await _unitOfWork.EventRepository.GetAllAsync() ??
+                throw new KeyNotFoundException("Not found");
+            var item = list.MaxBy(x => x.CreateDate);
+            return item;
+        }
     }
 }
