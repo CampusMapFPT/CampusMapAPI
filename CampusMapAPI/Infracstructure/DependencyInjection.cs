@@ -49,6 +49,8 @@ namespace Infracstructures
             // Use local DB
             services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(config.GetConnectionString("CampusMapDB")));
 
+            // Use azure DB
+            // services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(config.GetConnectionString("CampusMapDBAzure")));
             return services;
         }
     }
