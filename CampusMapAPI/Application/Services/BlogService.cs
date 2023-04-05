@@ -22,7 +22,7 @@ namespace Application.Services
             return await _unitOfWork.BlogRepository.GetAllAsync();
         }
 
-        public async Task<Blog> GetByIdAsync(Guid id)
+        public async Task<Blog> GetByIdAsync(int id)
         {
             var item = await _unitOfWork.BlogRepository.GetByIdAsync(id) ??
                 throw new KeyNotFoundException("Not found");

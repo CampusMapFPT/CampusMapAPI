@@ -30,7 +30,7 @@ namespace Application.Services
                 .GetAllAsync(filter: x => x.EndDate > DateTime.UtcNow);
         }
 
-        public async Task<Event> GetByIdAsync(Guid id)
+        public async Task<Event> GetByIdAsync(int id)
         {
             var item = await _unitOfWork.EventRepository.GetByIdAsync(id) ??
                 throw new KeyNotFoundException("Not found");
