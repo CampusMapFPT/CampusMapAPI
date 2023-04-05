@@ -50,7 +50,7 @@ namespace Infracstructures
             services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(config.GetConnectionString("CampusMapDB")));
 
             // Use azure DB
-            // services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(config.GetConnectionString("CampusMapDBAzure")));
+            services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(config.GetConnectionString("CampusMapDBAzure")));
             return services;
         }
     }
