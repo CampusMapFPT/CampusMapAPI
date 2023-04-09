@@ -46,7 +46,7 @@ namespace WebAPI.Controllers
         {
             try
             {
-                var list = await _eventService.GetAllFutureEventAsync();
+                var list = await _eventService.GetAllOnGoingEventAsync();
                 return Ok(new BaseResponseModel()
                 {
                     Status = Ok().StatusCode,
@@ -95,7 +95,7 @@ namespace WebAPI.Controllers
             }
         }
 
-        [HttpGet("lastest")]
+        [HttpGet("latest")]
         public async Task<IActionResult> GetLastestEvent()
         {
             try

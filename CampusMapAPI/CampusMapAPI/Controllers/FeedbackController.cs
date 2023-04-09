@@ -1,6 +1,7 @@
 ﻿using Application.IServices;
 using Application.ResponseModels;
 using Application.Services;
+using Application.ViewModels.Feedback;
 using Domain.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -19,11 +20,11 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SendNewFeedback(Feedback feedback)
+        public async Task<IActionResult> SendNewFeedback(FeedbackAddVM feedbackVM)
         {
             try
             {
-                await _feedbackService.AddNewFeedbackAsync(feedback);
+                await _feedbackService.AddNewFeedbackAsync(feedbackVM);
                 return Created("api/feedback", new BaseResponseModel
                 {
                     Status = 201,

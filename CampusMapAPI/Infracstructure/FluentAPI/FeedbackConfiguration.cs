@@ -15,6 +15,9 @@ namespace Infracstructures.FluentAPI
         {
             builder.ToTable(nameof(Feedback));
 
+            //Id
+            builder.HasKey(x => x.Id);
+
             builder.Property(x => x.Content)
                 .IsRequired()
                 .HasMaxLength(200);

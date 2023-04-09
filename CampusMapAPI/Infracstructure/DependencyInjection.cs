@@ -3,6 +3,7 @@ using Application.IRepositories;
 using Application.IServices;
 using Application.Services;
 using Domain.Models;
+using Infracstructures.Mappers;
 using Infracstructures.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -47,10 +48,11 @@ namespace Infracstructures
             #endregion
 
             // Use local DB
-            services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(config.GetConnectionString("CampusMapDB")));
+             services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(config.GetConnectionString("CampusMapDB")));
 
             // Use azure DB
             // services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(config.GetConnectionString("CampusMapDBAzure")));
+            services.AddAutoMapper(typeof(MapperConfigs).Assembly);
             return services;
         }
     }

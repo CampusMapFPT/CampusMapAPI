@@ -91,19 +91,23 @@ namespace Infracstructures.Migrations
 
             modelBuilder.Entity("Domain.Models.Feedback", b =>
                 {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
                     b.Property<string>("Content")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CreateDate")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
-
                     b.Property<int>("Ratings")
                         .HasColumnType("int");
+
+                    b.HasKey("Id");
 
                     b.ToTable("Feedbacks");
                 });
