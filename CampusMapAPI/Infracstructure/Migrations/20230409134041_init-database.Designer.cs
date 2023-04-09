@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infracstructures.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230405030131_InitDatabase")]
-    partial class InitDatabase
+    [Migration("20230409134041_init-database")]
+    partial class initdatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -94,19 +94,23 @@ namespace Infracstructures.Migrations
 
             modelBuilder.Entity("Domain.Models.Feedback", b =>
                 {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
                     b.Property<string>("Content")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CreateDate")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
-
                     b.Property<int>("Ratings")
                         .HasColumnType("int");
+
+                    b.HasKey("Id");
 
                     b.ToTable("Feedbacks");
                 });

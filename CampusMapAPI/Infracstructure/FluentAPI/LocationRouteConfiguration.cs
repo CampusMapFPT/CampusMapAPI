@@ -20,11 +20,11 @@ namespace Infracstructures.FluentAPI
             builder.HasOne(x => x.FirstLocation)
                 .WithMany()
                 .HasForeignKey(x => x.FirstLocationId)
-                .OnDelete(DeleteBehavior.Restrict); 
+                .OnDelete(DeleteBehavior.NoAction); 
             builder.HasOne(x => x.SecondLocation)
                 .WithMany()
                 .HasForeignKey(x => x.SecondLocationId)
-                .OnDelete(DeleteBehavior.Restrict); 
+                .OnDelete(DeleteBehavior.NoAction); 
         }
     }
 }

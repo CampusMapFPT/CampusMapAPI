@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Infracstructures.Migrations
 {
     /// <inheritdoc />
-    public partial class InitDatabase : Migration
+    public partial class initdatabase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -52,13 +52,15 @@ namespace Infracstructures.Migrations
                 name: "Feedbacks",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Ratings = table.Column<int>(type: "int", nullable: false),
                     CreateDate = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Content = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Content = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
+                    table.PrimaryKey("PK_Feedbacks", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(

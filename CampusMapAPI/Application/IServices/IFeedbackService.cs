@@ -1,4 +1,5 @@
-﻿using Domain.Models;
+﻿using Application.ViewModels.Feedback;
+using Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace Application.IServices
 {
     public interface IFeedbackService
     {
-        Task AddNewFeedbackAsync(Feedback feedback);
+        Task AddNewFeedbackAsync(FeedbackAddVM feedbackVM);
     }
 }

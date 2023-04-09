@@ -55,7 +55,7 @@ namespace Infracstructures.Repositories
 
             if (filter != null)
             {
-                query.Where(filter);
+                query = query.Where(filter);
             }
             return await query.ToListAsync();
         }
