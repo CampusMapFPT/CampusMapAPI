@@ -49,9 +49,5 @@ namespace Infracstructures
             return await _context.SaveChangesAsync();
         }
 
-        Task<int> IUnitOfWork.SaveChangesAsync()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

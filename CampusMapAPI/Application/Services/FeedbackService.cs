@@ -25,7 +25,7 @@ namespace Application.Services
         {
             var feedback = _mapper.Map<Feedback>(feedbackVM);
             await _unitOfWork.FeedbackRepository.AddAsync(feedback);
-            //await _unitOfWork.SaveChangesAsync();
+            await _unitOfWork.SaveChangesAsync();
         }
     }
 }

@@ -193,14 +193,21 @@ namespace Application.Services
             Location nextLocation)
         {
             string direction = "";
-            var directionValue =
-                (currentLocation.XCoordinate - prevLocation.XCoordinate) *
-                (nextLocation.YCoordinate - prevLocation.XCoordinate) -
-                (currentLocation.YCoordinate - prevLocation.YCoordinate) *
-                (nextLocation.XCoordinate - prevLocation.XCoordinate);
 
-            if (directionValue > 0) direction = "Rẽ trái";
-            if (directionValue < 0) direction = "Rẽ phải";
+            var p1p3 = new
+            {
+                x = nextLocation.XCoordinate - prevLocation.XCoordinate,
+                y= nextLocation.YCoordinate - prevLocation.YCoordinate
+            };
+            var p1p2 = new
+            {
+                x = currentLocation.XCoordinate - prevLocation.XCoordinate,
+                y = currentLocation.YCoordinate - prevLocation.YCoordinate
+            };
+            var directionValue = p1p3.x*p1p2.y-p1p3.y*p1p2.x;  
+
+            if (directionValue < 0) direction = "Rẽ trái";
+            if (directionValue > 0) direction = "Rẽ phải";
             if (prevLocation.Floor - currentLocation.Floor < 0) direction = "Đi lên";
             if (prevLocation.Floor - currentLocation.Floor > 0) direction = "Đi xuống";
 

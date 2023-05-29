@@ -25,9 +25,9 @@ namespace WebAPI.Controllers
             try
             {
                 await _feedbackService.AddNewFeedbackAsync(feedbackVM);
-                return Created("api/feedback", new BaseResponseModel
+                return Ok(new BaseResponseModel
                 {
-                    Status = 201,
+                    Status = 200,
                     Message = "Send feedback success",
                 });
             }

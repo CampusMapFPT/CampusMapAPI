@@ -31,7 +31,9 @@ namespace WebAPI
                                   {
                                       policy.WithOrigins(
                                           "http://localhost:3000",
-                                          "https://campusmapfpt.netlify.app")
+                                          "https://campusmapfpt.netlify.app",
+                                          "https://campusmap.info",
+                                          "https://campusmap-private.netlify.app")
                                       .AllowAnyHeader()
                                       .AllowAnyMethod();
                                   });

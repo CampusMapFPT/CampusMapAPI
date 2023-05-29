@@ -21,6 +21,7 @@ namespace Application.Services
                 var distance = GetDistance(
                     route.FirstLocation,
                     route.SecondLocation);
+                if (route.FirstLocation.Floor != route.SecondLocation.Floor) distance *= 2;
                 graph.Connect(
                     (uint)route.FirstLocationId,
                     (uint)route.SecondLocationId,

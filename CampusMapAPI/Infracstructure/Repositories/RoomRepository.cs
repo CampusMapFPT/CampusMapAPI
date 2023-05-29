@@ -24,5 +24,7 @@ namespace Infracstructures.Repositories
                 .Include(x => x.Location)
                 .FirstOrDefaultAsync(x => x.Id == id);            
         }
+
+        public async Task<List<Room>> GetAllAsync() => await _dbSet.Include(x => x.Location).ToListAsync();
     }
 }
