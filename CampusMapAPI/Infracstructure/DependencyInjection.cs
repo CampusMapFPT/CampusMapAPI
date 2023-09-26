@@ -51,7 +51,7 @@ namespace Infracstructures
             // services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(config.GetConnectionString("CampusMapDB")));
 
             // Use azure DB
-            services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(config.GetConnectionString("CampusMapDBSomee")));
+            services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(config.GetConnectionString("CampusMapDBAzure")));
             services.AddAutoMapper(typeof(MapperConfigs).Assembly);
             return services;
         }
